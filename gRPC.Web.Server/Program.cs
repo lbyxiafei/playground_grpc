@@ -4,6 +4,17 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddGrpc();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "AllowOrigin",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:4200")
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+        });
+});
+
 builder.WebHost.ConfigureKestrel(options =>
 {
     // Setup a HTTP/2 endpoint without TLS.
@@ -11,10 +22,11 @@ builder.WebHost.ConfigureKestrel(options =>
 });
 
 var app = builder.Build();
+
+app.UseCors("AllowOrigin");
 app.UseGrpcWeb();
 
 app.MapGet("/", () => "Hello World!");
-
 app.MapGrpcService<HelloWorldImplService>().EnableGrpcWeb();
 
 app.Run();
