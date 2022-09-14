@@ -19,3 +19,12 @@ C:\Users\binyanli\Desktop\gRPC\gRPC.Web.Server\obj\Debug\net6.0\refint\gRPC.Web.
 C:\Users\binyanli\Desktop\gRPC\gRPC.Web.Server\obj\Debug\net6.0\gRPC.Web.Server.pdb
 C:\Users\binyanli\Desktop\gRPC\gRPC.Web.Server\obj\Debug\net6.0\gRPC.Web.Server.genruntimeconfig.cache
 C:\Users\binyanli\Desktop\gRPC\gRPC.Web.Server\obj\Debug\net6.0\ref\gRPC.Web.Server.dll
+C:\Users\binyanli\Desktop\gRPC\gRPC.Web.Server\bin\Debug\net6.0\Google.Protobuf.dll
+C:\Users\binyanli\Desktop\gRPC\gRPC.Web.Server\bin\Debug\net6.0\Grpc.AspNetCore.Server.dll
+C:\Users\binyanli\Desktop\gRPC\gRPC.Web.Server\bin\Debug\net6.0\Grpc.AspNetCore.Server.ClientFactory.dll
+C:\Users\binyanli\Desktop\gRPC\gRPC.Web.Server\bin\Debug\net6.0\Grpc.AspNetCore.Web.dll
+C:\Users\binyanli\Desktop\gRPC\gRPC.Web.Server\bin\Debug\net6.0\Grpc.Core.Api.dll
+C:\Users\binyanli\Desktop\gRPC\gRPC.Web.Server\bin\Debug\net6.0\Grpc.Net.Client.dll
+C:\Users\binyanli\Desktop\gRPC\gRPC.Web.Server\bin\Debug\net6.0\Grpc.Net.ClientFactory.dll
+C:\Users\binyanli\Desktop\gRPC\gRPC.Web.Server\bin\Debug\net6.0\Grpc.Net.Common.dll
+C:\Users\binyanli\Desktop\gRPC\gRPC.Web.Server\obj\Debug\net6.0\gRPC.Web.Server.csproj.CopyComplete
