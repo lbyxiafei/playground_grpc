@@ -5,9 +5,13 @@
 
 > Add *.proto under src/app/protos, and `cd` into the protos dir
 
-```protoc --plugin=protoc-gen-ts="C:\Users\binyanli\Desktop\gRPC\gRPC.Angular.Client\node_modules\.bin\protoc-gen-ts.cmd" --js_out="import_style=commonjs,binary:../generated" --ts_out="service=grpc-web:../generated" stream.proto```
+## HelloWorld
 
 ```protoc --plugin=protoc-gen-ts="C:\Users\binyanli\Desktop\gRPC\gRPC.Angular.Client\node_modules\.bin\protoc-gen-ts.cmd" --js_out="import_style=commonjs,binary:../generated" --ts_out="service=grpc-web:../generated" helloworld.proto```
+
+## Branch
+
+```protoc --plugin=protoc-gen-ts="C:\Users\binyanli\Desktop\gRPC\gRPC.Angular.Client\node_modules\.bin\protoc-gen-ts.cmd" --js_out="import_style=commonjs,binary:../generated" --ts_out="service=grpc-web:../generated" branch.proto```
 
 # Envoy
 ## Windows

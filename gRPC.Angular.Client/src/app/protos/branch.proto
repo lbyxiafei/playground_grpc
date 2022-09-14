@@ -1,0 +1,83 @@
+syntax = "proto3";
+option csharp_namespace= "Workbench.Domain.Protobuf";
+package GrpcBranch;
+
+service GrpcBranch {
+  rpc GetBranch (BranchRequest) returns (BranchReply) {}
+}
+
+message BranchRequest {
+  bytes id = 1;
+  BranchTypes type = 2;
+  int32 reference_version = 3;
+  FilterModels query = 4;
+  BranchLoadType load_type = 5;
+}
+
+message BranchReply {
+  repeated ColumnMetadata columns = 1;
+  repeated Row rows = 2;
+  map <int32, string> mapping = 3;
+}
+
+
+// Structs
+
+// Row Data
+message Row {
+  repeated int32 data = 1;
+}
+// AgGrid Filter
+message FilterModels {
+  map<string, FilterEntry> filter_model = 1;
+}
+
+message FilterEntry {
+  FilterType filter_type  = 1;
+  repeated string values = 2;
+  FilterOperation type = 3;
+  string filter = 4;
+  string filter_to = 5;
+}
+
+message ColumnMetadata {
+  string name = 1;
+  bool isPk = 2;
+  ColumnType type = 3;
+}
+
+// Enums
+enum FilterType {
+  Text = 0;
+  Number = 1;
+  Date = 2;
+  Set = 3;
+}
+
+enum FilterOperation {
+  Contains = 0;
+  GreaterThan = 1;
+  LessThan = 2;
+  Equals = 3;
+  LessThanOrEqual = 4;
+  GreaterThanOrEqual = 5;
+  InRange = 6;
+}
+
+enum BranchTypes {
+  CAPACITY_ORDER = 0;
+}
+
+enum BranchLoadType {
+  New = 0;
+  Cache = 1;
+  Reload = 2;
+}
+
+enum ColumnType {
+  String = 0;
+  DateType = 1;
+  Int = 2;
+  Double = 3;
+}
+
