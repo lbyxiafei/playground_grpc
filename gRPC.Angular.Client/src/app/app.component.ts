@@ -26,27 +26,21 @@ export class AppComponent {
 
     this.grpcClient = grpc.invoke(Greeter.SayHello, {
       request: request,
-      host: `http://localhost:9999`,
-      // host: `http://localhost:50051`,
+      host: `http://localhost:7264`,
+      //host: `http://localhost:7264/grpc/grpc-web-service`,
       onMessage: (message: HelloReply) => {
-        // This section works when server writes something to stream.
-
         const data = message.toObject();
         console.log(data.message);
       },
       onEnd: (code: grpc.Code, msg: string | undefined, trailers: grpc.Metadata) => {
-        // This section works when server close connection.
-
         if (code == grpc.Code.OK) {
           console.log('request finished wihtout any error');
         } else {
           console.log('an error occured\n', 'code:', code, '\n', 'msg:', msg, '\n', 'trailers:', trailers);
           console.dir(trailers);
         }
-
       },
     });
-
     console.log("Hello");
   }
 
