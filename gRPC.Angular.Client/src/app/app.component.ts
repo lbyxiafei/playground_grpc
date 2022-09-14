@@ -26,8 +26,7 @@ export class AppComponent {
 
     this.grpcClient = grpc.invoke(Greeter.SayHello, {
       request: request,
-      host: `http://localhost:7264`,
-      //host: `http://localhost:7264/grpc/grpc-web-service`,
+      host: `http://localhost:5265/grpc/grpc-web-service`,
       onMessage: (message: HelloReply) => {
         const data = message.toObject();
         console.log(data.message);

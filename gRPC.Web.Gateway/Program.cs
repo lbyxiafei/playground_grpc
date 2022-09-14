@@ -9,6 +9,7 @@ proxyBuilder.LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 
 var app = builder.Build();
 
+
 // Enable endpoint routing, required for the reverse proxy
 app.UseRouting();
 // Register the reverse proxy routes

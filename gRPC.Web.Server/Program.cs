@@ -15,11 +15,11 @@ builder.Services.AddCors(options =>
         });
 });
 
-builder.WebHost.ConfigureKestrel(options =>
-{
-    // Setup a HTTP/2 endpoint without TLS.
-    options.ListenLocalhost(7264, o => o.Protocols = HttpProtocols.Http2);
-});
+//builder.WebHost.ConfigureKestrel(options =>
+//{
+//    // Setup a HTTP/2 endpoint without TLS.
+//    options.ListenLocalhost(7264, o => o.Protocols = HttpProtocols.Http2);
+//});
 
 var app = builder.Build();
 
