@@ -7,6 +7,9 @@ import { StreamService } from './generated/stream_pb_service';
 import { HelloRequest, HelloReply } from './generated/helloworld_pb';
 import { Greeter, GreeterClient } from './generated/helloworld_pb_service';
 
+import { BranchRequest, BranchReply } from './generated/branch_pb';
+import { GrpcBranch } from './generated/branch_pb_service';
+
 
 @Component({
   selector: 'app-root',
@@ -20,6 +23,27 @@ export class AppComponent {
 
   messages: string[] = [];
 
+  testBranch() {
+    console.log("test branch");
+    const request = new BranchRequest();
+
+    this.grpcClient = grpc.invoke(GrpcBranch.GetBranch, {
+      request: request,
+      host: `http://localhost:5265/grpc/grpc-web-service`,
+      onMessage: (message: BranchReply) => {
+        const data = message.toObject();
+        this.messages.push("branch received!");
+      },
+      onEnd: (code: grpc.Code, msg: string | undefined, trailers: grpc.Metadata) => {
+        if (code == grpc.Code.OK) {
+          console.log('gRPC web request finished wihtout any error');
+        } else {
+          console.log('an error occured\n', 'code:', code, '\n', 'msg:', msg, '\n', 'trailers:', trailers);
+        }
+      },
+    });
+  }
+
   sayHello() {
     const request = new HelloRequest();
     request.setName('Tortoise');
@@ -29,18 +53,16 @@ export class AppComponent {
       host: `http://localhost:5265/grpc/grpc-web-service`,
       onMessage: (message: HelloReply) => {
         const data = message.toObject();
-        console.log(data.message);
+        this.messages.push(data.message);
       },
       onEnd: (code: grpc.Code, msg: string | undefined, trailers: grpc.Metadata) => {
         if (code == grpc.Code.OK) {
-          console.log('request finished wihtout any error');
+          console.log('gRPC web request finished wihtout any error');
         } else {
           console.log('an error occured\n', 'code:', code, '\n', 'msg:', msg, '\n', 'trailers:', trailers);
-          console.dir(trailers);
         }
       },
     });
-    console.log("Hello");
   }
 
   startStream() {
@@ -71,5 +93,9 @@ export class AppComponent {
 
   stopStream() {
     this.grpcClient.close();
+  }
+
+  clear(){
+    this.messages = [];
   }
 }

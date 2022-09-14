@@ -3,7 +3,8 @@
 
 # Proto
 
-> Add *.proto under src/app/protos, and `cd` into the protos dir
+> Add *.proto under src/app/protos 
+> `cd` into the protos dir
 
 ## HelloWorld
 

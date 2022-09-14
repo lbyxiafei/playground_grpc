@@ -8,7 +8,7 @@ namespace gRPC.Web.Server.Protos
         {
             var res = new HelloReply
             {
-                Message = "ctrl + S"
+                Message = "Hello," + request.Name + "!"
             };
             return Task.FromResult(res);
         }
