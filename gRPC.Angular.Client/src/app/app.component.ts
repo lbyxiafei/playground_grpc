@@ -140,14 +140,12 @@ export class AppComponent {
     const request = new HelloRequest();
     request.setName('Tortoise');
 
-    var enc = new TextEncoder();
-    console.log(enc.encode("This is a string converted to a Uint8Array"));
-
     this.grpcClient = grpc.invoke(Greeter.SayHello, {
       request: request,
-      host: `http://localhost:5265/grpc/grpc-web-service`,
-      //host: `http://localhost:7070`,
-      //host: `http://localhost:50051`,
+      //host: `http://localhost:5265/grpc/grpc-web-service`,
+      // host: `http://localhost:6666`,
+      host: `http://localhost:9999`,
+      // host: `http://localhost:50051`,
       onMessage: (message: HelloReply) => {
         const data = message.toObject();
         this.messages.push(data.message);
